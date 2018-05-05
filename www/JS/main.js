@@ -1,17 +1,3 @@
-// This is a JavaScript file
-
-
-var keepInf = function(){
-var username = document.getElementById('userName').value;
-  if (username == 'bob') {
-    alert('Congratulations!');
-  } else {
-    alert('Incorrect username or password.');
-  }
-};
-
-
-
 function getPicLib()
         {
             var option = {
@@ -31,7 +17,6 @@ function getPicLib()
 
         function onSuccess(imageURI)
         {
-            
-         
+            var toppic = document.getElementById("topPic");
+            toppic.src = imageURI;
         }
-

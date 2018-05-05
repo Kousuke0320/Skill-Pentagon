@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <script src="components/loader.js"></script>
+       <script src="components/loader.js"></script>
+    <script src="components/numb/ncmb.min.js"></script>
     <script src="JS/back.js"></script>
     <script src="JS/main.js"></script>
     <link rel="stylesheet" href="components/loader.css">
@@ -16,14 +17,15 @@
 </head>
 <body>
   <div id="page1" class="page1">
-  <div id="pic" class="pic" onclick="getPicLib() ">
-    <img  src="img/camera.png"   />
+  <div id="pic" class="pic" onclick="getPicLib()">
+    <img  src="img/camera.png" id="topPic"/>
   </div>
   <ons-input id="userName" modifier="underbar" placeholder="Your Name" float></ons-input>
-  <a href="index2.html">
-  <div id="conbtn" class="conbtn" onclick="keepInf()">
+  <ons-input id="password" type="password"  modifier="underbar" placeholder="Password" float></ons-input>
+  
+  <div id="conbtn" class="conbtn" onclick="keepInf()" >
   </div>
-  </a>
+ 
   </div>
 </body>
 </html>

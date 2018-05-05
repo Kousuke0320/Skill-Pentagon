@@ -39,8 +39,17 @@ right: 20%;
 color: #20b2aa;
 }
 
+#password{
+  position: absolute;
+  top:53vh;
+  left: 20vw;
+  height: 8vh;
+  width: 60vw;
+color: #20b2aa;
+}
+
 .conbtn {
-margin-top: 25vh;
+margin-top: 27vh;
 margin-left: auto;
 margin-right: auto;
 height: 7vh;
