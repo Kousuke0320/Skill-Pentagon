@@ -5,10 +5,31 @@ var ncmb = new NCMB(appKey, clientKey);
 
 var currentLoginUser; //現在ログイン中ユーザー
 
+
+//これから実装、パスワード、ユーザー名登録機能
+
+//var username = document.getElementById('userName').value;
+//var password = document.getElementById('password').value;
+/*
+var user = localStorage.getItem("username");
+if(user == null){
+  //何もしない
+}else{
+  document.getElementById("userName").value = user;
+alert("setsita");
+}
+*/
+
+
+
 function keepInf(){ 
 
 var username = document.getElementById('userName').value;
 var password = document.getElementById('password').value;
+
+localStorage.setItem("username",username);
+localStorage.setItem("password",password);
+
 
 //　Userインスタンスの生成
 var user = new ncmb.User();
@@ -21,6 +42,8 @@ ncmb.User.login(username, password)
       // ログイン後処理
     currentLoginUser = ncmb.User.getCurrentUser();
    window.location.href = 'index2.html'; // 通常の遷移
+
+  
     })
     .catch(function(err){
       // エラー処理
@@ -31,6 +54,7 @@ ncmb.User.login(username, password)
       currentLoginUser = ncmb.User.getCurrentUser();
       alert("seikou");
       window.location.href = 'index2.html'; // 通常の遷移
+  
     })
     .catch(function(err){
       // エラー処理

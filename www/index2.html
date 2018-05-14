@@ -6,7 +6,11 @@
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
+   <script src="lib/onsenui/js/angular-onsenui.js"></script>
 <script src="components/numb/ncmb.min.js"></script>
+<script src="JS/back.js"></script>
+<script src="JS/index2.js"></script>
+    <script src="JS/main.js"></script>
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
@@ -14,72 +18,102 @@
 
   <script>
 
-    var appKey    = "b2ad1ad2eef5d227d63f4361e690020186a1f51d39428e14b2320d145e3ff1e0";
-var clientKey = "2b9f2bb9895ba7cc701f432a220edd739374f757ccadb49f6e246c78931871bb";
 
-var ncmb = new NCMB(appKey, clientKey);
+    
+/*
+currentLoginUser = ncmb.User.getCurrentUser();
+var name = document.getElementById("name");
+name.innerHTML = currentLoginUser.get("userName");
+*/
 
-// 保存先クラスの作成
-var TestClass = ncmb.DataStore("TestClass");
-
-// 保存先クラスのインスタンスを生成
-var testClass = new TestClass();
-
-// 値を設定と保存
-testClass.set("message", "Hello, NCMB!")
-         .save()
-         .then(function(object){
-             // 保存に成功した場合の処理
-
-         })
-         .catch(function(err){
-             // 保存に失敗した場合の処理
-alert("dekinakatta");
-         });
-
-
-
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
+  ons.ready(function() {
+      chart1();
+      console.log("chart");
     });
+
+function tin(){
+console.log("tin");
+}
+
+function tintin(){
+  console.log("tintin");
+}
+
+function deta(page){
+  
+  if(page == 'home.html'){
+  chart1();
+  }else if(page == 'settings.html'){
+    //syori
+tin();
+  
+  }else if(page == 'about.html'){
+//syori
+tintin();
+  
+  }
+}
+
 
     window.fn = {};
     window.fn.open = function() {
       var menu = document.getElementById('menu');
       menu.open();
     };
-    window.fn.load = function(page) {
-      var content = document.getElementById('content');
+
+
+function page(page){
+    var content = document.getElementById('content');
+      var menu = document.getElementById('menu');
+      content
+        .load(page);
+        menu
+         .close();
+menu.addEventListener('postclose', function(event) {
+  deta(page);
+});
+} 
+
+
+/*
+ window.fn.load = function(page) {
+    var content = document.getElementById('content');
       var menu = document.getElementById('menu');
       content
         .load(page)
         .then(menu.close.bind(menu));
     };
-
-  </script>
+*/
+</script>
 </head>
 <body>
   <ons-splitter>
     <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
       <ons-page>
         <ons-list>
-          <ons-list-item onclick="fn.load('home.html')" tappable>
-            Home
+          <div id="profile" class="profile">
+            <img src="" id="topPic4"/>
+          </div>
+          <ons-list-item id = "list"onclick="page('home.html')" tappable>
+                        Home
           </ons-list-item>
-          <ons-list-item onclick="fn.load('settings.html')" tappable>
+          <ons-list-item onclick="page('settings.html')" tappable>
             Settings
           </ons-list-item>
-          <ons-list-item onclick="fn.load('about.html')" tappable>
+          <ons-list-item onclick="page('about.html')" tappable>
             About
           </ons-list-item>
         </ons-list>
+        <ons-postclose >
+          </ons-postclose>
       </ons-page>
     </ons-splitter-side>
-    <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    <ons-splitter-content id="content" page="home.html">
+    </ons-splitter-content>
   </ons-splitter>
 
-  <ons-template id="home.html">
-    <ons-page>
+  <ons-template id="home.html"">
+    <ons-page id="page1">
       <ons-toolbar>
         <div class="left">
           <ons-toolbar-button onclick="fn.open()">
@@ -87,15 +121,18 @@ alert("dekinakatta");
           </ons-toolbar-button>
         </div>
         <div class="center">
-          Main
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Swipe right to open the menu!
-      </p>
+       <div id="pic2" class="pic2">
+         <img  src="" id="topPic3"/>
+      </div>
+      <div id="name">
+      </div>
+      <canvas id="chart-canvas"></canvas>
     </ons-page>
   </ons-template>
 
+  
   <ons-template id="settings.html">
   <ons-page>
     <ons-toolbar>
@@ -104,10 +141,12 @@ alert("dekinakatta");
           <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
         </ons-toolbar-button>
       </div>
-      <div class="center">
-        Settings
+      <div class="center" id="aaa">
+        
       </div>
+     
     </ons-toolbar>
+     <canvas id="myChart" width="400" height="400"></canvas>
   </ons-page>
   </ons-template>
 

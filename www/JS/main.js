@@ -1,3 +1,5 @@
+
+
 function getPicLib()
         {
             var option = {
@@ -17,6 +19,18 @@ function getPicLib()
 
         function onSuccess(imageURI)
         {
-            var toppic = document.getElementById("topPic");
+           localStorage.setItem('topPic',imageURI);
+            var toppic = document.getElementById("topPic2");
             toppic.src = imageURI;
+           
         }
+
+        function page(){
+          window.location.href = 'index.html'; // 通常の遷移
+        }
+
+
+        
+
+
+
